@@ -35,4 +35,15 @@ class DNAAnalyzer:
     def analyze_sequence(self, sequence):
         self.dna_sequence.set_sequence(sequence)
         return self.dna_sequence.count_nucleotides()
-    
+
+@app.route('/complement', methods=['POST'])
+
+'''If I were to continue the code, I would implement this complement class. '''
+def complement_sequence():
+    data = request.get_json()
+    sequence = data.get('sequence', '')
+    complemented_sequence = complementer.complement_sequence(sequence)
+    return jsonify({"complemented_sequence": complemented_sequence})
+
+if __name__ == '__main__':
+    app.run(debug=True)
